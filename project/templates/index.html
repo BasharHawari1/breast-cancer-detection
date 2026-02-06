@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Breast Cancer Classification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+            padding-top: 40px;
+        }
+        .container {
+            background-color: white;
+            width: 60%;
+            margin: auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px #ccc;
+        }
+        input[type="file"] {
+            margin: 20px;
+        }
+        img {
+            max-width: 80%;
+            height: auto;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+        .prediction {
+            font-size: 24px;
+            color: #333;
+            margin-top: 15px;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        h1 {
+            color: #222;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🩺 Breast Cancer Detection using YOLOv8</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="image" accept="image/*" required><br>
+            <button type="submit" class="btn">Upload & Predict</button>
+        </form>
+
+        {% if prediction %}
+            <div class="prediction">
+                <strong>Prediction:</strong> {{ prediction }}
+            </div>
+        {% endif %}
+
+        {% if image_path %}
+            <img src="{{ image_path }}" alt="Predicted Image">
+        {% endif %}
+    </div>
+</body>
+</html>
